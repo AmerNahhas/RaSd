@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RaSd — Operational Clarity for Small Businesses</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --sand: #F5F2EC;
+  --ink: #1C1C1A;
+  --ink-mid: #4A4A46;
+  --ink-light: #8A8A84;
+  --accent: #1D9E75;
+  --accent-light: #E1F5EE;
+  --border: rgba(28,28,26,0.1);
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--sand); color: var(--ink); }
+nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 4rem; border-bottom: 0.5px solid var(--border); background: var(--sand); position: sticky; top: 0; z-index: 10; }
+.nav-name { font-family: 'DM Serif Display', serif; font-size: 1.2rem; letter-spacing: 0.02em; }
+.nav-links { display: flex; gap: 2rem; }
+.nav-links a { font-size: 0.82rem; color: var(--ink-mid); text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s; }
+.nav-links a:hover { color: var(--accent); }
+.hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 80vh; border-bottom: 0.5px solid var(--border); }
+.hero-left { padding: 4rem; display: flex; flex-direction: column; justify-content: center; border-right: 0.5px solid var(--border); }
+.section-tag { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
+.section-tag::before { content: ''; display: block; width: 20px; height: 1px; background: var(--accent); }
+.hero-headline { font-family: 'DM Serif Display', serif; font-size: clamp(2.2rem, 3.5vw, 3.2rem); line-height: 1.1; margin-bottom: 1.25rem; }
+.hero-headline em { font-style: italic; color: var(--accent); }
+.hero-sub { font-size: 1rem; color: var(--ink-mid); line-height: 1.7; max-width: 420px; margin-bottom: 2rem; font-weight: 300; }
+.cta-row { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+.btn-primary { background: var(--ink); color: white; padding: 0.7rem 1.6rem; border-radius: 2px; font-size: 0.85rem; font-family: 'DM Sans', sans-serif; letter-spacing: 0.04em; cursor: pointer; border: none; transition: background 0.2s; text-decoration: none; display: inline-block; }
+.btn-primary:hover { background: var(--accent); }
+.btn-ghost { color: var(--ink-mid); font-size: 0.85rem; letter-spacing: 0.03em; cursor: pointer; background: none; border: none; font-family: 'DM Sans', sans-serif; display: inline-flex; align-items: center; gap: 6px; transition: color 0.2s; text-decoration: none; }
+.btn-ghost:hover { color: var(--accent); }
+.btn-ghost::after { content: '→'; }
+.hero-right { padding: 3rem 3.5rem; background: white; display: flex; flex-direction: column; justify-content: center; gap: 0.875rem; }
+.pain-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 0.25rem; }
+.pain-card { padding: 1rem 1.25rem; border: 0.5px solid var(--border); border-radius: 2px; display: flex; gap: 0.875rem; align-items: flex-start; background: var(--sand); transition: border-color 0.2s; }
+.pain-card:hover { border-color: var(--accent); }
+.pain-icon { width: 32px; height: 32px; border-radius: 2px; background: var(--accent-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 13px; font-weight: 500; color: var(--accent); }
+.pain-text h4 { font-size: 0.85rem; font-weight: 500; margin-bottom: 0.2rem; }
+.pain-text p { font-size: 0.78rem; color: var(--ink-light); line-height: 1.5; }
+.services-section { padding: 4rem; border-bottom: 0.5px solid var(--border); }
+.section-title { font-family: 'DM Serif Display', serif; font-size: clamp(1.7rem, 2.8vw, 2.4rem); line-height: 1.15; margin-bottom: 0.75rem; max-width: 540px; }
+.section-title em { font-style: italic; color: var(--accent); }
+.section-sub { font-size: 0.95rem; color: var(--ink-mid); line-height: 1.7; max-width: 540px; font-weight: 300; margin-bottom: 2rem; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 0.5px solid var(--border); }
+.service-item { padding: 1.75rem 1.5rem; background: var(--sand); transition: background 0.2s; }
+.service-item:hover { background: white; }
+.service-num { font-family: 'DM Serif Display', serif; font-size: 0.75rem; color: var(--ink-light); margin-bottom: 0.75rem; letter-spacing: 0.05em; }
+.service-item h3 { font-size: 0.9rem; font-weight: 500; margin-bottom: 0.4rem; line-height: 1.3; }
+.service-item p { font-size: 0.78rem; color: var(--ink-mid); line-height: 1.6; }
+.how-section { background: var(--ink); color: white; padding: 4rem; }
+.how-section .section-tag { color: var(--accent); }
+.how-section .section-tag::before { background: var(--accent); }
+.how-section .section-title { color: white; max-width: 100%; }
+.how-section .section-sub { color: rgba(255,255,255,0.55); }
+.steps-row { display: grid; grid-template-columns: repeat(4, 1fr); border: 0.5px solid rgba(255,255,255,0.1); }
+.step { padding: 1.75rem 1.5rem; border-right: 0.5px solid rgba(255,255,255,0.1); }
+.step:last-child { border-right: none; }
+.step-num { font-family: 'DM Serif Display', serif; font-size: 2.2rem; color: var(--accent); margin-bottom: 0.75rem; line-height: 1; }
+.step h4 { font-size: 0.875rem; font-weight: 500; margin-bottom: 0.35rem; color: white; }
+.step p { font-size: 0.78rem; color: rgba(255,255,255,0.45); line-height: 1.6; }
+.about-section { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 0.5px solid var(--border); }
+.about-left { padding: 4rem; border-right: 0.5px solid var(--border); }
+.about-right { padding: 4rem 3.5rem; background: white; }
+.about-sub { font-size: 0.9rem; color: var(--ink-mid); line-height: 1.75; max-width: 460px; font-weight: 300; margin-bottom: 1.5rem; }
+.tools-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.tool-tag { font-size: 0.72rem; padding: 3px 10px; border: 0.5px solid var(--border); border-radius: 1px; color: var(--ink-mid); letter-spacing: 0.02em; }
+.credential { padding: 0.75rem 0; border-bottom: 0.5px solid var(--border); display: flex; align-items: flex-start; gap: 10px; }
+.credential:last-child { border-bottom: none; }
+.cred-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); margin-top: 7px; flex-shrink: 0; }
+.credential p { font-size: 0.82rem; color: var(--ink-mid); line-height: 1.55; }
+.credential strong { color: var(--ink); font-weight: 500; display: block; margin-bottom: 1px; }
+.contact-section { padding: 4rem; text-align: center; }
+.contact-section .section-title { max-width: 100%; margin: 0 auto 0.75rem; }
+.contact-section .section-sub { max-width: 480px; margin: 0 auto 2rem; }
+.contact-row { display: flex; justify-content: center; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
+.contact-link { padding: 0.65rem 1.75rem; border: 0.5px solid var(--border); border-radius: 2px; font-size: 0.85rem; color: var(--ink-mid); text-decoration: none; transition: all 0.2s; letter-spacing: 0.02em; }
+.contact-link:hover { border-color: var(--accent); color: var(--accent); }
+.contact-link.primary { background: var(--ink); color: white; border-color: var(--ink); }
+.contact-link.primary:hover { background: var(--accent); border-color: var(--accent); }
+footer { padding: 1.25rem 4rem; border-top: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+footer p { font-size: 0.75rem; color: var(--ink-light); }
+.fade-in { opacity: 0; transform: translateY(14px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { gap: 1.25rem; }
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 3rem 1.5rem 2rem; border-right: none; border-bottom: 0.5px solid var(--border); }
+  .hero-right { padding: 2rem 1.5rem; }
+  .services-section, .how-section, .about-left, .contact-section { padding: 3rem 1.5rem; }
+  .services-grid { grid-template-columns: 1fr; }
+  .steps-row { grid-template-columns: 1fr 1fr; }
+  .step { border-right: none; border-bottom: 0.5px solid rgba(255,255,255,0.1); }
+  .about-section { grid-template-columns: 1fr; }
+  .about-right { padding: 2.5rem 1.5rem; }
+  footer { flex-direction: column; gap: 4px; padding: 1.25rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-name">RaSd</div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#how">How it works</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+<section class="hero">
+  <div class="hero-left fade-in">
+    <div class="section-tag">RaSd — Operational Clarity</div>
+    <h1 class="hero-headline">Your business runs.<br><em>Do your numbers?</em></h1>
+    <p class="hero-sub">I help small business owners see exactly where money is made, lost, and leaking — through clear monthly reporting and straightforward analysis.</p>
+    <div class="cta-row">
+      <a href="#contact" class="btn-primary">Book a free 15-min call</a>
+      <a href="#services" class="btn-ghost">See what I offer</a>
+    </div>
+  </div>
+  <div class="hero-right fade-in">
+    <div class="pain-label">Sound familiar?</div>
+    <div class="pain-card">
+      <div class="pain-icon">$</div>
+      <div class="pain-text">
+        <h4>Revenue looks fine but profit feels thin</h4>
+        <p>You're busy, but not sure which jobs are actually making money.</p>
+      </div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-icon">%</div>
+      <div class="pain-text">
+        <h4>Labor costs are hard to track</h4>
+        <p>Hours get logged, but the true labor percentage never gets calculated.</p>
+      </div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-icon">?</div>
+      <div class="pain-text">
+        <h4>Numbers live in your head, not on paper</h4>
+        <p>You run on instinct. It mostly works — but you know you're flying blind.</p>
+      </div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-icon">&#8593;</div>
+      <div class="pain-text">
+        <h4>No time to analyze, only to operate</h4>
+        <p>The business consumes you. There's no one to organize data and explain it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="services-section fade-in" id="services">
+  <div class="section-tag">What I offer</div>
+  <h2 class="section-title">Clear, practical support — <em>not complicated systems</em></h2>
+  <p class="section-sub">I work with small, owner-operated businesses to organize financial and operational data and turn it into actionable monthly reporting.</p>
+  <div class="services-grid">
+    <div class="service-item">
+      <div class="service-num">01</div>
+      <h3>Monthly business snapshot</h3>
+      <p>Revenue trends, expense breakdown, labor percentage, and net margin — delivered as a clean 1-2 page report with a 30-minute review call.</p>
+    </div>
+    <div class="service-item">
+      <div class="service-num">02</div>
+      <h3>Job and contract profitability</h3>
+      <p>Find out which contracts are making money and which are barely breaking even. Essential for service businesses pricing by the job.</p>
+    </div>
+    <div class="service-item">
+      <div class="service-num">03</div>
+      <h3>Labor cost analysis</h3>
+      <p>Understand your true labor spend per job or shift — and identify where overstaffing or underbilling is eating your margin.</p>
+    </div>
+    <div class="service-item">
+      <div class="service-num">04</div>
+      <h3>Expense and waste tracking</h3>
+      <p>A simple tracker that flags over-ordering, duplicate expenses, and cost creep before it compounds into a real problem.</p>
+    </div>
+    <div class="service-item">
+      <div class="service-num">05</div>
+      <h3>Cash flow visibility</h3>
+      <p>Know when money comes in, when bills go out, and how much runway you actually have — without guessing.</p>
+    </div>
+    <div class="service-item">
+      <div class="service-num">06</div>
+      <h3>Operations clarity report</h3>
+      <p>For businesses with scheduling or process inefficiencies — I surface where time and money are being lost each month.</p>
+    </div>
+  </div>
+</section>
+<section class="how-section fade-in" id="how">
+  <div class="section-tag">How it works</div>
+  <h2 class="section-title">Simple. <em>No disruption</em> to how you operate.</h2>
+  <p class="section-sub">You share what you already have. I organize it, analyze it, and give you something actionable every month.</p>
+  <div class="steps-row">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h4>Free clarity call</h4>
+      <p>15 minutes. We talk about your business, your pain points, and what you want to see more clearly.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h4>You send your data</h4>
+      <p>Invoices, POS exports, payroll summaries — whatever you have. No special systems required.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h4>I organize and analyze</h4>
+      <p>I build clean spreadsheets, calculate margins, and identify what is working and what is not.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h4>Monthly report and call</h4>
+      <p>You receive a clear report and we review it together. You make better decisions. Simple.</p>
+    </div>
+  </div>
+</section>
+<section class="about-section" id="about">
+  <div class="about-left fade-in">
+    <div class="section-tag">About</div>
+    <h2 class="section-title">Operations experience. <em>Analytical mindset.</em></h2>
+    <img src="IMG_0233.jpeg" alt="Amer Nahhas" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; object-position: center top; margin-bottom: 1.5rem; border: 0.5px solid var(--border);">
+    <p class="about-sub">I am Amer — Boston-based, with a background spanning operations management, team coordination, and data analysis across multiple industries and countries. I understand what it is like to be in the middle of a busy operation with no time to look at the numbers clearly.</p>
+    <p class="about-sub">My goal is simple: help small business owners spend less time guessing and more time making decisions with confidence. I do not sell dashboards or complicated systems. I organize what you have and tell you what it means.</p>
+    <div class="tools-row">
+      <span class="tool-tag">Excel</span>
+      <span class="tool-tag">SQL</span>
+      <span class="tool-tag">Python</span>
+      <span class="tool-tag">Tableau</span>
+      <span class="tool-tag">Asana</span>
+      <span class="tool-tag">Jira</span>
+      <span class="tool-tag">Monday.com</span>
+      <span class="tool-tag">Google PM Certificate</span>
+      <span class="tool-tag">Data Analytics Certificate</span>
+    </div>
+  </div>
+  <div class="about-right fade-in">
+    <div style="font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 1.25rem;">Background</div>
+    <div class="credential">
+      <div class="cred-dot"></div>
+      <p><strong>Operations Manager — OPAL, Bar Harbor ME</strong>Led daily operations and managed a team of 25+ staff in a high-volume service environment.</p>
+    </div>
+    <div class="credential">
+      <div class="cred-dot"></div>
+      <p><strong>Sales Team Lead — KI General Store, Ohio</strong>Managed a team of 5, overseeing sales floor operations and performance tracking.</p>
+    </div>
+    <div class="credential">
+      <div class="cred-dot"></div>
+      <p><strong>BackOffice Analyst — Telus International, Bulgaria</strong>High-volume data processing and ticket management on a large international project team.</p>
+    </div>
+    <div class="credential">
+      <div class="cred-dot"></div>
+      <p><strong>B.A. in Business Management</strong>Damascus University and American University of Bulgaria. Trilingual: English, Arabic, French.</p>
+    </div>
+    <div class="credential">
+      <div class="cred-dot"></div>
+      <p><strong>Google PM and Data Analytics Certificates</strong>Structured project thinking combined with practical data analysis methodology.</p>
+    </div>
+  </div>
+</section>
+<section class="contact-section fade-in" id="contact">
+  <div class="section-tag" style="justify-content: center;">Get in touch</div>
+  <h2 class="section-title">Ready to understand your numbers?</h2>
+  <p class="section-sub">Start with a free 15-minute call. No pitch, no pressure — just a conversation about your business and whether I can help.</p>
+  <div class="contact-row">
+    <a href="mailto:aamernah@gmail.com" class="contact-link primary">Book a clarity call</a>
+    <a href="mailto:aamernah@gmail.com" class="contact-link">aamernah@gmail.com</a>
+    <a href="https://linkedin.com/in/amer22" class="contact-link" target="_blank">LinkedIn</a>
+    <a href="tel:4195738695" class="contact-link">(419) 573-8695</a>
+  </div>
+</section>
+<footer>
+  <p>RaSd — Boston, MA</p>
+  <p>Operational clarity for small businesses · Amer Nahhas</p>
+</footer>
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
